@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import './assets/main.css'
 
 const showPassword = ref(false)
 
@@ -31,8 +32,10 @@ function togglePassword() {
           </div>
 
           <!-- Title -->
-          <div class="mb-4 text-center">
-            <span class="badge bg-blue-700 px-5 py-3 fs-2 rounded-4">LIWU MOKESA</span>
+          <div class="mb-4 text-center title-font">
+            <span class="badge bg-blue-700 px-5 py-2.5 fs-1 rounded-4">
+              LIWU MOKESA
+            </span>
           </div>
 
           <!-- Illustration placeholder -->
@@ -43,7 +46,7 @@ function togglePassword() {
 
           <!-- Description -->
           <div class="mt-auto d-flex">
-            <div class="w-60 ms-auto lh-lg">
+            <div class="w-60 ms-auto lh-lg paragraph-font">
               <div class="fw-bold mb-2">
                 SIM ASN (Sistem Informasi Manajemen Aparatur Sipil Negara)
               </div>
@@ -51,8 +54,7 @@ function togglePassword() {
               <div class="text-divider mb-2"></div>
 
               <div>
-                adalah platform digital untuk memudahkan ASN dalam pelaporan aktivitas
-                kinerja dan kehadiran kerja berbasis Website dan Mobile App.
+                adalah platform digital untuk memudahkan Aparatur Sipil Negara (ASN) dalam melakukan pelaporan aktifitas kinerja dan kehadiran kerja berbasis Website dan Mobile App.
               </div>
             </div>
           </div>
@@ -77,9 +79,9 @@ function togglePassword() {
 
           <div class="mb-4">
             <label class="form-label small fw-semibold">NOMOR INDUK PEGAWAI (NIP)</label>
-            <div class="input-group">
+            <div class="input-group seamless-input">
               <input class="form-control form-control-lg" placeholder="Masukkan Username" />
-              <button class="btn btn-outline-secondary" type="button">
+              <button class="btn seamless-btn" type="button">
                 <i class="bi bi-person-fill"></i>
               </button>
             </div>
@@ -87,9 +89,9 @@ function togglePassword() {
 
           <div class="mb-5">
             <label class="form-label small fw-semibold">PASSWORD</label>
-            <div class="input-group">
+            <div class="input-group seamless-input">
               <input :type="showPassword ? 'text' : 'password'" class="form-control form-control-lg" placeholder="Masukkan Password" />
-              <button class="btn btn-outline-secondary" type="button" @click="togglePassword">
+              <button class="btn seamless-btn" type="button" @click="togglePassword">
                 <i class="bi" :class="showPassword ? 'bi-eye-fill' : 'bi-eye-slash-fill'"></i>
               </button>
             </div>
@@ -100,7 +102,7 @@ function togglePassword() {
           </button>
 
           <!-- Store buttons -->
-          <div class="d-flex justify-content-center gap-3 mb-5">
+          <div class="d-flex justify-content-center gap-3 mb-5 store-buttons-container">
             <img
               src="./resources/Palystore.svg"
               alt="Play Store"
@@ -114,14 +116,14 @@ function togglePassword() {
           </div>
 
           <!-- Footer -->
-          <div class="d-flex align-items-center justify-content-center text-muted fs-5 gap-3 mt-4">
+          <div class="d-flex align-items-center justify-content-center text-muted fs-5 gap-3 mt-4 footer-font">
             <img
               src="./resources/Group.svg"
               alt="Afila Media Karya"
               class="footer-logo"
             />
             <span>
-              Crafted by <span class="text-primary fw-semibold">Afila Media KW</span>
+              Crafted by <span class="fw-semibold footer-color">Afila Media KW</span>
             </span>
           </div>
         </div>
@@ -137,8 +139,60 @@ function togglePassword() {
 
 <style scoped>
 
+.title-font {
+  font-family: 'Red Hat Display', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.paragraph-font {
+  font-family: 'Red Hat Display', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.footer-font {
+  font-family: 'Manrope', system-ui, sans-serif;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-color {
+  color: #354C9F;
+}
+
 .form-control::placeholder {
   color: rgba(0, 0, 0, 0.3);
+}
+
+.seamless-input {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.seamless-input .form-control {
+  border: none;
+  border-radius: 0;
+}
+
+.seamless-input .form-control:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.seamless-btn {
+  border: none;
+  background: white;
+  color: #2E3A59;
+  padding: 0.5rem 1rem;
+}
+
+.seamless-btn:hover,
+.seamless-btn:focus,
+.seamless-btn:active {
+  background: white;
+  border: none;
+  color: #2E3A59;
+  box-shadow: none;
 }
 
 .w-60 {
@@ -201,12 +255,19 @@ function togglePassword() {
   width: auto;
 }
 
+.store-buttons-container {
+  position: relative;
+  z-index: 10;
+}
+
 .store-btn {
   min-width: 140px;
   width: 192px;
   height: 60px; 
   border-radius: 2px;  
   background: rgba(0,0,0,0);
+  position: relative;
+  z-index: 10;
 }
 
 .footer-logo {
@@ -221,6 +282,7 @@ function togglePassword() {
   background: radial-gradient(circle, rgba(255,200,100,0.6), transparent 70%);
   filter: blur(40px);
   pointer-events: none;
+  z-index: 1;
 }
 
 .blob-top {
